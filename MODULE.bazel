@@ -3,4 +3,12 @@ module(
     version = "0.1.0-pre",
     compatibility_level = "1",
 )
+bazel_dep(
+  name = "remotejdk11_macos",
+  version = "11.0.6",
+)
 
+bazel_dep(
+  name = "remote_java_tools",
+  version = "11.3",
+)
