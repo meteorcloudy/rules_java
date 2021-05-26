@@ -1,0 +1,26 @@
+
+config_setting(
+    name = "prefix_version_setting",
+    values = {"java_runtime_version": "remotejdk_11"},
+    visibility = ["//visibility:private"],
+)
+config_setting(
+    name = "version_setting",
+    values = {"java_runtime_version": "11"},
+    visibility = ["//visibility:private"],
+)
+alias(
+    name = "version_or_prefix_version_setting",
+    actual = select({
+        ":version_setting": ":version_setting",
+        "//conditions:default": ":prefix_version_setting",
+    }),
+    visibility = ["//visibility:private"],
+)
+toolchain(
+    name = "toolchain",
+    exec_compatible_with = ["@platforms//os:macos", "@platforms//cpu:x86_64"],
+    target_settings = [":version_or_prefix_version_setting"],
+    toolchain_type = "@bazel_tools//tools/jdk:runtime_toolchain_type",
+    toolchain = "@remotejdk11_macos//:jdk",
+)
