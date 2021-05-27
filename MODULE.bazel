@@ -1,8 +1,17 @@
+# self = module(
 module(
     name = "rules_java",
     version = "0.1.0-pre",
     compatibility_level = "1",
+#    module_rule_exports = ["module_rules.bzl"],
+#    toolchains_to_register = [
+#      "@rules_java//toolchain",
+#      "@rules_java//toolchain/jdk:all",
+#    ],
 )
+
+# self.local_java_toolchain.setup()
+
 bazel_dep(
   name = "remotejdk11_macos",
   version = "11.0.6",

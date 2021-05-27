@@ -1,14 +1,15 @@
-
 config_setting(
     name = "prefix_version_setting",
     values = {"java_runtime_version": "remotejdk_11"},
     visibility = ["//visibility:private"],
 )
+
 config_setting(
     name = "version_setting",
     values = {"java_runtime_version": "11"},
     visibility = ["//visibility:private"],
 )
+
 alias(
     name = "version_or_prefix_version_setting",
     actual = select({
@@ -17,6 +18,7 @@ alias(
     }),
     visibility = ["//visibility:private"],
 )
+
 toolchain(
     name = "toolchain",
     exec_compatible_with = ["@platforms//os:macos", "@platforms//cpu:x86_64"],
